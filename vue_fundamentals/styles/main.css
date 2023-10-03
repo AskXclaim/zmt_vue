@@ -1,0 +1,13 @@
+[v-cloak] {
+    display: none;
+}
+
+.div-space {
+    margin: 5px;
+}
+
+button {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}

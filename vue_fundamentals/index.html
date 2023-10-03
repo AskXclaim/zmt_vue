@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue_Fundamentals</title>
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+</head>
+<body>
+<div id="app" v-cloak>
+    <p>Welcome to vue</p>
+    <p>one way of doing it -> {{ `${firstName} ${middleName} ${lastName}`}}</p>
+    <p>A cleaner way of doing it ==> {{fullName()}}</p>
+    <p><a v-bind:href="url" target="_blank">Google</a></p>
+    <p><a :href="url" target="_blank">Google</a></p>
+    <p v-html="url_raw"></p>
+    <p>{{age}}</p>
+    <p>Full name based on compute: {{fullNameCompute}}</p>
+    <hr/>
+
+    <div>
+        <div class="div-space">
+            <label for="txtFirstName">First Name:</label>
+            <input type="text" id="txtFirstName" v-model.lazy.trim="firstName"/>
+        </div>
+        <div class="div-space">
+            <label for="txtMiddleName">Middle Name:</label>
+            <input type="text" id="txtMiddleName" :value="middleName" @keyup.enter="updateMiddleName"/>
+        </div>
+        <div class="div-space">
+            <label for="txtLastName">Last Name:</label>
+            <input type="text" id="txtLastName" :value="lastName" @input="updateLastName"/>
+            <p><input type="text" :value="lastName"
+                      @input="updateLastNameWithExtra('lastName with extra called',$event)"/></p>
+            <p><input type="text" :value="lastName"
+                      @input.prevent="updateLastNameWithExtraAndEventModifier('lastName with extra called',$event)"/>
+            </p>
+        </div>
+        <div><label for="txtAge">Age</label>
+            <input id="txtAge" type="number" v-model.number="age"/>
+        </div>
+
+
+        <div>
+            <button v-on:click="age++">Increase</button>
+            <button @click.shift="decrease">Decrease</button>
+        </div>
+    </div>
+</div>
+
+<!--<div id="duplicateApp">-->
+<!--    '{{title}}' by {{author}}-->
+<!--</div>-->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
