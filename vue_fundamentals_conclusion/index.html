@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="./styles/main.css">
+    <title>vue_Fundamentals_Conslusion</title>
+</head>
+<body>
+<div id="app" v-cloak>
+    <h3>Basic Maths</h3>
+    <div class="div-flex-direction-row grey-line">
+        <label for="mathTypeSelector">Select type of maths to solve:</label>
+        <select id="mathTypeSelector" v-model="mathSign">
+            <option value="+">Addition</option>
+            <option value="-">Subtraction</option>
+            <option value="/">Division</option>
+            <option value="*">Multiplication</option>
+        </select>
+    </div>
+
+    <div id="additionTasks" class="div-flex-direction-row">
+        <input type="number" id="num1" v-model="numOne" /> {{mathSign}}
+        <input type="number" id="num2" v-model="numTwo"/>
+        = {{answer}}
+    </div>
+    <div>
+        <span v-if="evenOrOdd===1">Answer is an even number</span>
+        <span v-else-if="evenOrOdd===0">Answer is an even odd</span>
+        <span v-else>Answer is neither an even number nor an odd number</span>
+    </div>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

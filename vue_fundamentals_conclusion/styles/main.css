@@ -1,0 +1,43 @@
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.div-flex-direction-row {
+    flex-direction: row;
+}
+
+.grey-line {
+    border-bottom: 2px dashed grey;
+    margin-bottom: 10px;
+}
+
+select {
+    margin: 10px;
+    min-width: 50px;
+    min-height: 30px;
+    border-radius: 7px;
+    text-align: center;
+}
+
+input[type="number"] {
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid lightblue;
+    text-align: center;
+}
+
+nput[type="number"]:focus {
+    outline: 1px solid lightblue;
+}
