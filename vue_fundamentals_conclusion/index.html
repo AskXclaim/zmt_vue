@@ -23,10 +23,14 @@
         <input type="number" id="num2" v-model="numTwo"/>
         = {{answer}}
     </div>
-    <div>
+    <div class="div-flex-direction-column">
         <span v-if="evenOrOdd===1">Answer is an even number</span>
         <span v-else-if="evenOrOdd===0">Answer is an even odd</span>
-        <span v-else>Answer is neither an even number nor an odd number</span>
+        <template v-else>
+            <div>Well done you have manage to cause a mathematical abnormally</div>
+            <span>Answer is neither an even number nor an odd number</span>
+        </template>
+        
     </div>
 </div>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
