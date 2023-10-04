@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue More Fundamentals</title>
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+</head>
+<body>
+<div id="app">
+    <div id="items" class="div-common">
+        <div>
+            <input id="circleColorChkBox" type="checkbox" v-model="isPurple">
+            <label for="circleColorChkBox">Change circle colour</label>
+        </div>
+        <div class="div-common">
+            <label for="textColorSelector">Change text color:</label>
+            <select id="textColorSelector" v-model="textColor"
+                    :style="{backgroundColor:textColor}">
+                <option value="white">White</option>
+                <option value="blue">Blue</option>
+                <option value="pink">pink</option>
+            </select>
+        </div>
+        <div>
+            <label for="cirleSizer">Adjust circle size:</label>
+            <input id="cirleSizer" type="range" min="200" max="300" v-model="circleSize">
+        </div>
+    </div>
+    <div id="divCircle" class="div-common" :class="{purple:isPurple}"
+         :style="[{height:`${circleSize}px`, width:`${circleSize}px`,
+          lineHeight:`${circleSize}px`, fontSize:`${circleFontSize}px !important`},
+          {transform:`rotate(${circleRotationDeg}deg)`}]">
+        <span id="spanHi" :class="[textColor]">HI!</span>
+    </div>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

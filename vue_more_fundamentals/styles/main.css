@@ -1,0 +1,53 @@
+body{
+    font-size: 1.5em;
+    font-weight: normal;
+}
+.div-common{
+    margin: 10px;
+}
+input{
+    min-width: 20px;
+}
+#items {
+    margin: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+    border-radius: 5px;
+}
+select{
+    font-size: 1em;
+    min-width: 100px;
+    width: 100px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+#divCircle {
+    min-width: 100px;
+    width: 200px;
+    min-height: 100px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: green;
+    text-align: center;
+    line-height: 200px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.purple{
+    background-color: purple !important;
+}
+.white{
+    color: white;
+}
+.blue{
+    color: blue;
+}
+.pink{
+    color: pink;
+}
+/*#spanHi{*/
+/*    margin: auto;*/
+/*}*/
