@@ -3,8 +3,18 @@ const vm = Vue.createApp({
         return {
             mathSign: "+",
             numOne: 0,
-            numTwo: 0
-
+            numTwo: 0,
+            persons: [{
+                name: "James Bond",
+                age: 7
+            }, {
+                name: "Jason Bourne",
+                age: 37
+            }, {
+                name: "Alex Account",
+                age: 35
+            }],
+            birds:["Blue Jay","Chicken","Ostrich"]
         }
     },
 

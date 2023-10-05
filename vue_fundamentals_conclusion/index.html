@@ -31,6 +31,24 @@
             <span>Answer is neither an even number nor an odd number</span>
         </template>
         
+        <div v-show="evenOrOdd===2">
+            How did you manage to get NaN...
+        </div>
+    </div>
+    <div>
+        <ul>
+            <li v-for="(bird,index) in birds" :key="bird">
+                {{bird}} - {{index}}
+            </li>
+        </ul>
+        
+        <ol>
+            <li v-for="person in persons">
+                <div v-for="(value,key,index) in person">
+                    {{key}}:{{value}} - {{index}}
+                </div>
+            </li>
+        </ol>
     </div>
 </div>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

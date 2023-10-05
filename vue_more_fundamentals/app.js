@@ -4,6 +4,9 @@ Vue.createApp({
             isPurple: false,
             textColor: "white",
             circleSize: 200,
+            persons:[
+                ""
+            ]
             // circleFontSize:30
         }
     },
