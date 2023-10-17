@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +11,7 @@
     <h2>CSS3 Perspective Playground</h2>
     <main>
         <section class="settings">
-            <div class="settings-container">
+            <div class="settings-container" v-cloak>
                 <label>perspective: {{perspective}}px;</label>
                 <input type="range" min="0" max="999" v-model.number="perspective"/>
 
@@ -25,13 +25,13 @@
                 <input type="range" min="-180" max="180" v-model="rotateZ"/>
 
                 <button type="button" @click.prevent="reset">Reset</button>
-                <button type="button">Copy</button>
+                <button type="button" @click="copy">Copy</button>
             </div>
         </section>
         <section class="output">
             <div class="box-container">
                 <div class="box"
-                     :style="box"></div>
+                     :style="[isCopied?rotateBox:box]"></div>
             </div>
         </section>
     </main>
