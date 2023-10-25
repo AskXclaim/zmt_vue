@@ -1,6 +1,7 @@
 <template>
   <greeting :userName="userName" @onUserNameChangeEvent="onUserNameChangeEvent($event)"/>
-  <user @onBirthDateChangeEvent="onBirthDateChangeEvent($event)"/>
+  <user @onBirthDateChangeEvent="onBirthDateChangeEvent($event)"
+        :onCbBirthDateChangeEvent="onBirthDateChangeEvent"/>
   <template v-if="age>10">
     <div class="border-dashes-2-px margin-padding-5-px-all">A ha! you {{ getUserName }}, are older than 10</div>
   </template>
