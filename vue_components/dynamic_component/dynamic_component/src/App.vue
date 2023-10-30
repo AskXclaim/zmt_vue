@@ -5,7 +5,14 @@
 
   <main>
     <div>
+      <h4> Data not kept alive</h4>
       <component :is="componentName"/>
+    </div>
+    <div>
+      <h4>Data kept alive</h4>
+      <KeepAlive>
+        <component :is="componentName"/>
+      </KeepAlive>
     </div>
   </main>
 </template>

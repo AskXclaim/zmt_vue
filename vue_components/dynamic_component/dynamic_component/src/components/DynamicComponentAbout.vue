@@ -3,6 +3,15 @@
 </template>
 <script>
 export default {
-  name:"DynamicComponentAbout",
+  name: "DynamicComponentAbout",
+  unmounted() {
+    console.log("DynamicComponentAbout component unmounted");
+  },
+  onActivated() {
+    console.log("DynamicComponentAbout component onActivated");
+  },
+  onDeactivated() {
+    console.log("DynamicComponentAbout component onDeactivated");
+  },
 }
 </script>
