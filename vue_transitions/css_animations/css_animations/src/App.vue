@@ -1,13 +1,17 @@
 <template>
   <div class="div-flex-main">
-    <div class="div-flex-header">
-      <h1>Animations</h1>
-    </div>
-    <div class="div-flex-components">
-      <fader/>
-      <zoomer/>
-      <javascriptFader/>
-      <jsCssComponent/>
+    <!--    <div class="div-flex-header">-->
+    <!--      <h1>Animations</h1>-->
+    <!--    </div>-->
+    <!--    <div class="div-flex-components">-->
+    <!--      <fader/>-->
+    <!--      <zoomer/>-->
+    <!--      <javascriptFader/>-->
+    <!--      <jsCssComponent/>-->
+    <!--    </div>-->
+
+    <div>
+      <animatedList/>
     </div>
   </div>
 
@@ -18,19 +22,21 @@ import fader from "@/components/Fader.vue";
 import zoomer from "@/components/Zoomer.vue";
 import javascriptFader from "@/components/JavascriptFader.vue";
 import jsCssComponent from "@/components/JsCssComponent.vue";
+import animatedList from "@/components/AnimatedList.vue";
 
 export default {
   name: "App",
-  components: {jsCssComponent, javascriptFader, zoomer, fader},
+  components: {animatedList, jsCssComponent, javascriptFader, zoomer, fader},
 }
 </script>
 <style>
-.div-flex-main{
+.div-flex-main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .div-flex-components {
   display: flex;
   flex-direction: row;
