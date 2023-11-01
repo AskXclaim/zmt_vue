@@ -26,20 +26,31 @@ export default {
     },
     onEnter(element, done) {
       console.log("I am enter event", element);
-      // const animation = element.animate([{},{}]);
-      done();
+      const animation = element.animate([{transform: "scale3d(0,0,0)"}, {transform: "scale3d(1,1,1)"}], {
+        duration: 1000
+      });
+      animation.onfinish = () => {
+        done();
+      };
     },
     onAfterEnter(element) {
-      console.log("I am afterEnter event", element)
+      console.log("I am afterEnter event", element);
     },
     onBeforeLeave(element) {
-      console.log("I am beforeLeave event", element)
+      console.log("I am beforeLeave event", element);
     },
     onLeave(element, done) {
-      console.log("I am leave event", element)
-      done();
+      console.log("I am leave event", element);
+      //NB leaving the object empty means it would use whatever properties
+      // are the browser's default.
+      const animation = element.animate([{}, {transform: "scale3d(0,0,0)"}], {
+        duration: 1000
+      });
+      animation.onfinish = () => {
+        done();
+      };
     }, onAfterLeave(element) {
-      console.log("I am afterLeave event", element)
+      console.log("I am afterLeave event", element);
     }
   }
 }

@@ -7,6 +7,7 @@
       <fader/>
       <zoomer/>
       <javascriptFader/>
+      <jsCssComponent/>
     </div>
   </div>
 
@@ -16,10 +17,11 @@
 import fader from "@/components/Fader.vue";
 import zoomer from "@/components/Zoomer.vue";
 import javascriptFader from "@/components/JavascriptFader.vue";
+import jsCssComponent from "@/components/JsCssComponent.vue";
 
 export default {
   name: "App",
-  components: {javascriptFader, zoomer, fader},
+  components: {jsCssComponent, javascriptFader, zoomer, fader},
 }
 </script>
 <style>
