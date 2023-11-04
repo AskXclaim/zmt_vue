@@ -1,8 +1,9 @@
 <template>
   <div class="addItem-div-flex-column">
     <div class="addItem-div-flex-row">
-      <input maxlength="100" type="text" v-model="inputValue" @input="onInputFocus"/>
-      <button @click="onAddItem">Add</button>
+      <input maxlength="100" type="text" v-model="inputValue"
+             @input="onInputFocus"/>
+      <button @click="addItem">Add</button>
     </div>
     <h5 v-if="!isInputValueValid" class="errorText">Please ensure you enter at least two characters</h5>
   </div>
@@ -10,7 +11,7 @@
 <script>
 export default {
   name: "AddItem",
-  emits: ["onAddItemEvent"],
+  emits: ["addItemEvent"],
   data() {
     return {
       inputValue: "",
@@ -18,11 +19,10 @@ export default {
     }
   },
   methods: {
-    onAddItem() {
+    addItem() {
       const inputText = this.inputValue.trim();
-      console.log(inputText);
       if (inputText) {
-        this.$emit("onAddItemEvent", inputText);
+        this.$emit("addItemEvent", inputText);
         this.inputValue = "";
         this.isInputValueValid = true;
       } else {
@@ -72,6 +72,7 @@ button {
   padding: 5px;
   color: #2c0505;
   cursor: pointer;
+  margin-top: 7px;
 
   &:hover {
     min-height: 35px;

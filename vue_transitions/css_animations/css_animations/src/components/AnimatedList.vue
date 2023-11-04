@@ -2,15 +2,19 @@
   <div class="div-flex-main">
     <h1>Ask's Todo List</h1>
     <hr>
-    <addItem @onAddItemEvent="onAddItemEvent"/>
+    <addItem @addItemEvent="addItemEvent"/>
+    <listItem :items="todoList" :undoItems="undoList"
+              @removeItemEvent="removeItemEvent"
+              @undoItemEvent="undoItemEvent"/>
   </div>
 </template>
 <script>
 import addItem from "@/components/AddItem.vue";
+import listItem from "@/components/ListItem.vue";
 
 export default {
   name: "AnimatedList",
-  components: {addItem},
+  components: {listItem, addItem},
   data() {
     return {
       todoList: [],
@@ -18,8 +22,33 @@ export default {
     }
   },
   methods: {
-    onAddItemEvent(value) {
-      this.todoList.push(value);
+    addItemEvent(value) {
+      this.todoList.splice(this.getAddIndex(), 0, value);
+    },
+    getAddIndex() {
+      return Math.floor(Math.random() * this.todoList.length);
+    },
+    removeItemEvent(index) {
+      this.undoList.push(this.todoList[index]);
+      this.todoList.splice(index, 1);
+    },
+    undoItemEvent() {
+      const item = this.undoList.pop();
+      this.addItemEvent(item);
+    }
+  },
+  watch: {
+    undoList: {
+      handler(newValue, oldValue) {
+        console.log("I am in watch");
+        if (this.undoList.length > 0) {
+          console.log("I am in watch");
+          setTimeout(() => {
+            this.undoList = [];
+          }, 3000);
+        }
+      },
+      deep: true,
     }
   }
 }
