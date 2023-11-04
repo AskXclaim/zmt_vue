@@ -40,9 +40,7 @@ export default {
   watch: {
     undoList: {
       handler(newValue, oldValue) {
-        console.log("I am in watch");
         if (this.undoList.length > 0) {
-          console.log("I am in watch");
           setTimeout(() => {
             this.undoList = [];
           }, 3000);

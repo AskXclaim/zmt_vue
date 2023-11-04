@@ -7,12 +7,14 @@
     </div>
     <div v-else>
       <ul>
-        <li v-for="(item,index) in items" :key="index">
-          <div class="listItem-div-flex-li">
-            => {{ item }}
-            <button @click="removeItem(index)">X</button>
-          </div>
-        </li>
+        <TransitionGroup name="listItem">
+          <li v-for="(item,index) in items" :key="index">
+            <div class="listItem-div-flex-li">
+              => {{ item }}
+              <button @click="removeItem(index)">X</button>
+            </div>
+          </li>
+        </TransitionGroup>
       </ul>
       <undoItem :undoItems="undoItems" @undoItemEvent="undoItem"/>
     </div>
@@ -103,5 +105,27 @@ button {
     font-size: medium;
     font-weight: bold;
   }
+}
+
+.listItem-enter-from {
+  opacity: 0;
+}
+
+.listItem-enter-active {
+  transition: all 1s ease;
+}
+
+.listItem-leave-active {
+  position: absolute;
+}
+
+.listItem-leave-to {
+  transition: all 1s ease;
+  opacity: 0;
+}
+
+.listItem-move {
+  transition: all 1s ease;
+  //transform: translateX(30px);
 }
 </style>
