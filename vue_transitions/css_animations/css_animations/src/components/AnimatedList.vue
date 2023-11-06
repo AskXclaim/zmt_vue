@@ -6,15 +6,19 @@
     <listItem :items="todoList" :undoItems="undoList"
               @removeItemEvent="removeItemEvent"
               @undoItemEvent="undoItemEvent"/>
+    <externalAnimateListItem :items="todoList" :undoItems="undoList"
+              @removeItemEvent="removeItemEvent"
+              @undoItemEvent="undoItemEvent"/>
   </div>
 </template>
 <script>
 import addItem from "@/components/AddItem.vue";
 import listItem from "@/components/ListItem.vue";
+import externalAnimateListItem from "@/components/ExternalAnimateListItem.vue";
 
 export default {
   name: "AnimatedList",
-  components: {listItem, addItem},
+  components: {externalAnimateListItem, listItem, addItem},
   data() {
     return {
       todoList: [],
