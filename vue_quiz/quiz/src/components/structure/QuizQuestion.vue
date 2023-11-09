@@ -1,6 +1,6 @@
 <template>
-  <div class="div-default-flex-setup div-size">
-    {{ question }}
+  <div class="div-default-flex-setup div-size" v-html="question">
+   
   </div>
 </template>
 <script>
@@ -15,8 +15,13 @@ export default {
       }
     }
   }
-}
+};
+
 </script>
 <style scoped lang="scss">
-
+div {
+  background: #1d97af;
+  color: whitesmoke;
+  font-size: 1em;
+}
 </style>

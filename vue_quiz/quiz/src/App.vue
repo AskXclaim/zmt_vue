@@ -1,4 +1,4 @@
-<template>
+<template v-show="">
 <quizMain/>
 </template>
 
