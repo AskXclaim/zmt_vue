@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       isLoaded: false,
-      totalNumberOfQuestions: 2,
+      totalNumberOfQuestions: 10,
       currentQuestion: 0,
       question: "no - question",
       result: {
@@ -77,7 +77,7 @@ export default {
 
     },
     onQuizResetEvent() {
-      this.totalNumberOfQuestions = 2;
+      this.totalNumberOfQuestions = 10;
       this.currentQuestion = 0;
       this.question = "no - question";
       this.result = {
