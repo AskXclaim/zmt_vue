@@ -52,7 +52,8 @@ export default {
   justify-content: center;
   box-sizing: border-box;
   height: 40px;
-  width: 300px;
+  min-width: 300px;
+  width: 100%;
   margin: 0;
   position: absolute;
   background: rgba(3, 172, 240, 0.2);

@@ -53,12 +53,26 @@ export default {
 
       const questionAndAnswers = await this.getQuestionAndAnswer();
       this.question = questionAndAnswers.question;
-      this.answers = [questionAndAnswers.correctAnswer, ...questionAndAnswers.incorrectAnswers];
+      this.answers = this.getShuffledAnswers(questionAndAnswers.incorrectAnswers, questionAndAnswers.correctAnswer);
       this.correctAnswer = questionAndAnswers.correctAnswer;
       this.currentQuestion += 1;
     },
     async getQuestionAndAnswer() {
       return await getQuestionAndAnswers();
+    },
+    /**
+      Returns shuffled answers to prevent the correct answer
+      from always been in the same position
+     @param {Array} incorrectAnswers
+     @param {Number} correctAnswer
+     @returns {Number}
+     */
+    getShuffledAnswers(incorrectAnswers, correctAnswer) {
+      const answers = [...incorrectAnswers];
+      const index = Math.floor(Math.random() * (incorrectAnswers.length + 1));
+      answers.splice(index, 0, correctAnswer);
+
+      return answers;
     },
     onAnAnswerClickedEvent(answer) {
       console.log(answer);
@@ -87,7 +101,7 @@ export default {
       this.answers = ["no-answer"];
       this.correctAnswer = "";
       this.answerIsCorrect = null;
-      
+
       this.setupNewQuestionAndAnswers();
     }
   }
