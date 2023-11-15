@@ -2,17 +2,19 @@
   <div class="flex flex-col">
     <musicAppMenuBar />
     <musicAppBanner />
-    <div>musicapp song list</div>
-    <div>music app audio player</div>
+    <musicAppPlayList />
+    <musicAppAudioPlayer />
   </div>
 </template>
 <script>
-import { defineComponent } from 'vue'
 import musicAppMenuBar from '@/components/music_app/MusicAppMenuBar.vue'
 import musicAppBanner from '@/components/music_app/MusicAppBanner.vue'
+import musicAppPlayList from '@/components/music_app/MusicAppPlayList.vue'
+import musicAppAudioPlayer from '@/components/music_app/MusicAppAudioPlayer.vue'
 
-export default defineComponent({
-  components: { musicAppBanner, musicAppMenuBar }
-})
+export default {
+  name: 'MusicApp',
+  components: { musicAppAudioPlayer, musicAppPlayList, musicAppBanner, musicAppMenuBar }
+}
 </script>
 <style scoped></style>

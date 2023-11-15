@@ -9,7 +9,11 @@
     </div>
   </div>
 </template>
-<script></script>
+<script>
+export default {
+  name: 'MusicAppMenuBar'
+}
+</script>
 
 <style lang="scss" scoped>
 ul li {
