@@ -25,14 +25,10 @@ export default {
   },
   methods: {
     toggleAuthModal() {
-      console.log(this.modalStore.isOpen)
       this.modalStore.isOpen = !this.modalStore.isOpen
-      console.log(this.modalStore.isOpen)
     },
     toggleAuthModalByDirectPropAccess() {
-      console.log(this.isOpen)
       this.isOpen = !this.isOpen
-      console.log(this.isOpen)
     }
   }
 }
