@@ -1,5 +1,8 @@
 <template>
-  <veeForm v-show="tab === authTabs.Register" autocomplete="on" :validationSchema="validationSchema">
+  <veeForm v-show="tab === authTabs.Register" autocomplete="on"
+           :validationSchema="validationSchema" @submit="register">
+    <musicAppAlert :shouldShowRegistrationAlert="shouldShowRegistrationAlert" :message="registrationAlertMessage"
+                   :currentProcess="registrationStage" @closeAlertEvent="closeAlertEvent"/>
     <!-- Name -->
     <div class="mb-3">
       <label for="name" class="inline-block mb-2">Name</label>
@@ -66,23 +69,25 @@
     </div>
     <!-- TOS -->
     <div class="mb-3 pl-6">
-      <veeField name="tos" id="tos" class="w-4 h-4 float-left -ml-6 mt-1 rounded" 
+      <veeField name="tos" id="tos" class="w-4 h-4 float-left -ml-6 mt-1 rounded"
                 type="checkbox" value="1"/>
       <label class="inline-block">Accept terms of service</label>
       <ErrorMessage name="tos" class="text-red-600 block"/>
     </div>
-    <button
-        class="block w-full bg-sky-700 text-white py-1.5 px-3 
-        rounded transition hover:bg-sky-800" type="submit">
+    <button :disabled="shouldShowRegistrationAlert"
+            class="block w-full bg-sky-700 text-white py-1.5 px-3 rounded transition
+             hover:bg-sky-800 disabled:cursor-not-allowed disabled:bg-sky-700" type="submit">
       Submit
     </button>
   </veeForm>
 </template>
 <script>
-import authTabs from '@/Utility/AuthEnum';
+import authTabs, {alertTypes, registrationAlertMsg, registrationStages} from '@/Utility/AuthEnum';
+import musicAppAlert from "@/components/music_app/banner/MusicAppAlert.vue";
 
 export default {
   name: 'MusicAppRegister',
+  components: {musicAppAlert},
   props: {
     tab: {
       type: String,
@@ -98,13 +103,29 @@ export default {
         password: "required|min:8|max:16",
         confirmPassword: "required|confirmed:@password",
         country: "required|excluded:Antarctica,Ussr",
-        tos:"required"
-      }
+        tos: "required"
+      },
+      shouldShowRegistrationAlert: false,
+      registrationAlertMessage: registrationAlertMsg.BeingProcessed,
+      registrationStage: registrationStages.NotStarted
     }
   },
   computed: {
     authTabs() {
       return authTabs
+    }
+  },
+  methods: {
+    register(values) {
+      console.log(values);
+      this.registrationAlertMessage = registrationAlertMsg.BeingProcessed;
+      this.registrationStage = registrationStages.Processing;
+      this.shouldShowRegistrationAlert = true;
+    },
+    closeAlertEvent(alertType) {
+      if (alertType && alertType === alertTypes.RegistrationAlert) {
+        this.shouldShowRegistrationAlert = false;
+      }
     }
   }
 }
