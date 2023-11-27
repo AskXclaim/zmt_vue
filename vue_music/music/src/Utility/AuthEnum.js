@@ -7,15 +7,16 @@ const alertTypes = Object.freeze({
     LoginAlert: "LoginAlert"
 });
 
-const registrationStages = Object.freeze({
+const authProcessStages = Object.freeze({
     NotStarted: "NotStarted",
     Processing: "Processing",
     ProcessingCompleted: "ProcessingCompleted"
 });
 
-const registrationAlertMsg = Object.freeze({
+const authAlertMsg = Object.freeze({
+    Empty: "",
     BeingProcessed: "Your registration is processing...",
     CompletedProcessing: "Your registration is complete"
 });
 export default authTabs;
-export {alertTypes, registrationStages, registrationAlertMsg};
+export {alertTypes, authProcessStages, authAlertMsg};

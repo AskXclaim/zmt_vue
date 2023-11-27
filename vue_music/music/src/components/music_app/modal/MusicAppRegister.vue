@@ -1,8 +1,8 @@
 <template>
   <veeForm v-show="tab === authTabs.Register" autocomplete="on"
            :validationSchema="validationSchema" @submit="register">
-    <musicAppAlert :shouldShowRegistrationAlert="shouldShowRegistrationAlert" :message="registrationAlertMessage"
-                   :currentProcess="registrationStage" @closeAlertEvent="closeAlertEvent"/>
+    <musicAppAlert :shouldShowAlert="shouldShowRegistrationAlert" :message="registrationAlertMessage"
+                   :currentProcess="registrationStage" :alertType="alertTypes.RegistrationAlert" @closeAlertEvent="closeAlertEvent"/>
     <!-- Name -->
     <div class="mb-3">
       <label for="name" class="inline-block mb-2">Name</label>
@@ -82,7 +82,7 @@
   </veeForm>
 </template>
 <script>
-import authTabs, {alertTypes, registrationAlertMsg, registrationStages} from '@/Utility/AuthEnum';
+import authTabs, {alertTypes, authAlertMsg, authProcessStages} from '@/Utility/AuthEnum';
 import musicAppAlert from "@/components/music_app/banner/MusicAppAlert.vue";
 
 export default {
@@ -106,11 +106,14 @@ export default {
         tos: "required"
       },
       shouldShowRegistrationAlert: false,
-      registrationAlertMessage: registrationAlertMsg.BeingProcessed,
-      registrationStage: registrationStages.NotStarted
+      registrationAlertMessage: authAlertMsg.Empty,
+      registrationStage: authProcessStages.NotStarted
     }
   },
   computed: {
+    alertTypes() {
+      return alertTypes
+    },
     authTabs() {
       return authTabs
     }
@@ -118,13 +121,23 @@ export default {
   methods: {
     register(values) {
       console.log(values);
-      this.registrationAlertMessage = registrationAlertMsg.BeingProcessed;
-      this.registrationStage = registrationStages.Processing;
+      this.registrationAlertMessage = authAlertMsg.BeingProcessed;
+      this.registrationStage = authProcessStages.Processing;
       this.shouldShowRegistrationAlert = true;
+
+      setTimeout(() => {
+        this.registrationStage = authProcessStages.ProcessingCompleted;
+        this.registrationAlertMessage = authAlertMsg.CompletedProcessing;
+        this.shouldShowRegistrationAlert = true;
+      }, 1500)
+
     },
     closeAlertEvent(alertType) {
       if (alertType && alertType === alertTypes.RegistrationAlert) {
         this.shouldShowRegistrationAlert = false;
+        this.registrationStage = authProcessStages.NotStarted;
+        this.registrationAlertMessage = authAlertMsg.Empty;
+        
       }
     }
   }
