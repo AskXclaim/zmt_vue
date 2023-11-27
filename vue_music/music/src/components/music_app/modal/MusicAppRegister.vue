@@ -2,7 +2,8 @@
   <veeForm v-show="tab === authTabs.Register" autocomplete="on"
            :validationSchema="validationSchema" @submit="register">
     <musicAppAlert :shouldShowAlert="shouldShowRegistrationAlert" :message="registrationAlertMessage"
-                   :currentProcess="registrationStage" :alertType="alertTypes.RegistrationAlert" @closeAlertEvent="closeAlertEvent"/>
+                   :currentProcess="registrationStage" :alertType="alertTypes.RegistrationAlert"
+                   @closeAlertEvent="closeAlertEvent"/>
     <!-- Name -->
     <div class="mb-3">
       <label for="name" class="inline-block mb-2">Name</label>
@@ -83,11 +84,11 @@
 </template>
 <script>
 import authTabs, {alertTypes, authAlertMsg, authProcessStages} from '@/Utility/AuthEnum';
-import musicAppAlert from "@/components/music_app/banner/MusicAppAlert.vue";
+import musicAppAuthAlert from "@/components/music_app/banner/musicAppAuthAlert.vue";
 
 export default {
   name: 'MusicAppRegister',
-  components: {musicAppAlert},
+  components: {musicAppAlert: musicAppAuthAlert},
   props: {
     tab: {
       type: String,
@@ -121,13 +122,13 @@ export default {
   methods: {
     register(values) {
       console.log(values);
-      this.registrationAlertMessage = authAlertMsg.BeingProcessed;
+      this.registrationAlertMessage = authAlertMsg.RegistrationInProcess;
       this.registrationStage = authProcessStages.Processing;
       this.shouldShowRegistrationAlert = true;
 
       setTimeout(() => {
         this.registrationStage = authProcessStages.ProcessingCompleted;
-        this.registrationAlertMessage = authAlertMsg.CompletedProcessing;
+        this.registrationAlertMessage = authAlertMsg.RegistrationComplete;
         this.shouldShowRegistrationAlert = true;
       }, 1500)
 
@@ -137,7 +138,7 @@ export default {
         this.shouldShowRegistrationAlert = false;
         this.registrationStage = authProcessStages.NotStarted;
         this.registrationAlertMessage = authAlertMsg.Empty;
-        
+
       }
     }
   }

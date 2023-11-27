@@ -9,10 +9,10 @@
   </div>
 </template>
 <script>
-import {alertTypes, authProcessStages} from "@/Utility/AuthEnum"
+import { authProcessStages} from "@/Utility/AuthEnum"
 
 export default {
-  name: "MusicAppAlert",
+  name: "MusicAppAuthAlert",
   computed: {
     processStage() {
       return authProcessStages
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     closeAlert() {
-      this.$emit("closeAlertEvent", alertTypes.RegistrationAlert)
+      this.$emit("closeAlertEvent", this.alertType)
     }
   }
 }
